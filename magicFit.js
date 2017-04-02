@@ -12,10 +12,11 @@ window.MagicFit = {
       var container = $(this);
       var src = container.attr('src');
       var height = {
-        xs: container.attr('height-xs') || container.css('height'),
-        sm: container.attr('height-sm') || container.css('height'),
-        md: container.attr('height-md') || container.css('height'),
-        lg: container.attr('height-lg') || container.css('height')
+        default: container.css('height'),
+        xs: container.attr('height-xs') || this.default,
+        sm: container.attr('height-sm') || this.default,
+        md: container.attr('height-md') || this.default,
+        lg: container.attr('height-lg') || this.default
       };
 
       if (windowWidth >= 1200) {
@@ -29,10 +30,12 @@ window.MagicFit = {
       }
 
       container.css({
+        // Picture properties.
         'background': 'transparent url(' + src + ')',
-        'backgroundSize': '100% ' + height + '',
+        'backgroundSize': '100% ' + height,
         'backgroundRepeat': 'no-repeat',
-        'height': '' + height
+        // Container properties.
+        'height': height
       });
     });
   },
@@ -43,11 +46,13 @@ window.MagicFit = {
 
       containers.each(function() {
         var container = $(this);
+        var src = container.attr('src');
         var height = {
-          xs: container.attr('height-xs') || container.css('height'),
-          sm: container.attr('height-sm') || container.css('height'),
-          md: container.attr('height-md') || container.css('height'),
-          lg: container.attr('height-lg') || container.css('height')
+          default: container.css('height'),
+          xs: container.attr('height-xs') || this.default,
+          sm: container.attr('height-sm') || this.default,
+          md: container.attr('height-md') || this.default,
+          lg: container.attr('height-lg') || this.default
         };
 
         if (windowWidth >= 1200) {
@@ -58,12 +63,18 @@ window.MagicFit = {
           height = height.sm;
         } else if (windowWidth < 768) {
           height = height.xs;
-        } 
+        }
 
-        container.css({'backgroundSize': '', 'height': ''});
+        // Reset container and picture properties.
         container.css({
+          'backgroundSize': '', 
+          'height': ''
+        });
+        container.css({
+          // Picture properties.
           'backgroundSize': '100% ' + height,
-          'height': '' + height
+          // Container properties.
+          'height': height
         });
       });
     });
