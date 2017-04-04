@@ -13,22 +13,23 @@ window.MagicFit = {
       var src = container.attr('src');
       var height = {
         default: container.css('height'),
-        xs: container.attr('height-xs') || this.default,
-        sm: container.attr('height-sm') || this.default,
-        md: container.attr('height-md') || this.default,
-        lg: container.attr('height-lg') || this.default
+        xs: container.attr('h-xs') || this.default,
+        sm: container.attr('h-sm') || this.default,
+        md: container.attr('h-md') || this.default,
+        lg: container.attr('h-lg') || this.default
       };
 
       if (windowWidth >= 1200) {
         height = height.lg;
       } else if (windowWidth >= 992) {
         height = height.md;
-      } else if (windowWidth >= 768) {
+      } else if (windowWidth >= 600) {
         height = height.sm;
-      } else if (windowWidth < 768) {
+      } else if (windowWidth < 600) {
         height = height.xs;
       }
 
+      // set responsive height and start to download each picture.
       container.css({
         // Picture properties.
         'background': 'transparent url(' + src + ')',
@@ -49,23 +50,23 @@ window.MagicFit = {
         var src = container.attr('src');
         var height = {
           default: container.css('height'),
-          xs: container.attr('height-xs') || this.default,
-          sm: container.attr('height-sm') || this.default,
-          md: container.attr('height-md') || this.default,
-          lg: container.attr('height-lg') || this.default
+          xs: container.attr('h-xs') || this.default,
+          sm: container.attr('h-sm') || this.default,
+          md: container.attr('h-md') || this.default,
+          lg: container.attr('h-lg') || this.default
         };
 
         if (windowWidth >= 1200) {
           height = height.lg;
         } else if (windowWidth >= 992) {
           height = height.md;
-        } else if (windowWidth >= 768) {
+        } else if (windowWidth >= 600) {
           height = height.sm;
-        } else if (windowWidth < 768) {
+        } else if (windowWidth < 600) {
           height = height.xs;
         }
 
-        // Reset container and picture properties.
+        // Reset container and picture size properties.
         container.css({
           'backgroundSize': '', 
           'height': ''
